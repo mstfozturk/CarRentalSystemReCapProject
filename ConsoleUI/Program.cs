@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
@@ -9,7 +10,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new InMemoryCarDal());
+            CarManager carManager = new CarManager(new EfCarDal());
             
             //Tüm araçların listesini yazdırıyoruz
             foreach (var car in carManager.GetAll())
@@ -18,33 +19,19 @@ namespace ConsoleUI
             }
             Console.WriteLine("------------------");
 
-            //Araç ekleiyoruz ve ekleme işleminden sonra tüm araçların listesini yazdırıyoruz
-            Car car1 = new Car() { Id = 1, BrandId = 4, ColorId = 3, ModelYear = 2020, DailyPrice = 700, Description = "BMW X5 Dizel Otomatik" };
-            carManager.Add(car1);
-            foreach (var car in carManager.GetAll())
-            {
-                Console.WriteLine(car.ModelYear + " Model "+ car.Description + " : " + car.DailyPrice+"TL");
-            }
-            Console.WriteLine("------------------");
+            //BrandId ye göre araç listeleme
 
-            //Araç düzenliyoruz ve düzenleme işleminden sonra tüm araçların listesini yazdırıyoruz
-            Car car2 = new Car() { Id = 1, BrandId = 1, ColorId = 2, ModelYear = 2015, DailyPrice = 280, Description = "Opel Astra Benzinli Manuel" };
-            carManager.Update(car2);
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetCarsByBrandId(1))
             {
-                Console.WriteLine(car.ModelYear + " Model " + car.Description + " : " + car.DailyPrice + "TL");
+                Console.WriteLine(car.Description);
             }
-            Console.WriteLine("------------------");
+            Console.WriteLine("------------------------");
 
-            //Araç Silme işleminden sonra tüm araçların listesini yazdırıyoruz
-            carManager.Delete(car1);
-            foreach (var car in carManager.GetAll())
+            //ColorId ye göre araç listeleme
+            foreach (var car in carManager.GetCarsByColorId(2))
             {
-                Console.WriteLine(car.ModelYear + " Model " + car.Description + " : " + car.DailyPrice + "TL");
+                Console.WriteLine(car.Description);
             }
-            Console.WriteLine("------------------");
-            //Araçları id numarasına göre yazdırıyoruz
-            carManager.GetById(2);
         }
     }
 }

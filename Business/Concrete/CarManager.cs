@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    
+
     public class CarManager : ICarService
     {
         //Business katmanında DataAccess katmanını kullanabilmek için constructor injection uygulandı.
@@ -21,7 +21,14 @@ namespace Business.Concrete
         //İş kuralları eklendi
         public void Add(Car car)
         {
-            _carDal.Add(car);
+            if (car.Description.Length >= 2 && car.DailyPrice > 0)
+            {
+                _carDal.Add(car);
+            }
+            else
+            {
+                Console.WriteLine("Araç adı ikiden büyük ve günlük fiyatı sıfırdan yüksek olmalı");
+            }
         }
 
         public void Delete(Car car)
@@ -34,9 +41,14 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public List<Car> GetById(int id)
+        public List<Car> GetCarsByBrandId(int brandId)
         {
-           return _carDal.GetById(id);
+            return _carDal.GetAll(c => c.BrandId == brandId);
+        }
+
+        public List<Car> GetCarsByColorId(int colorId)
+        {
+            return _carDal.GetAll(c => c.ColorId == colorId);
         }
 
         public void Update(Car car)
