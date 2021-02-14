@@ -7,7 +7,7 @@ using System.Text;
 namespace DataAccess.Concrete.EntityFramework
 {
     //Context, Db tabloları ile projedeki classları bağlamak için kullanılır
-    class CarRentalDbContext:DbContext
+    public class CarRentalDbContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
