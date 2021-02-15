@@ -20,6 +20,10 @@ namespace Business.Concrete
 
         public void Add(Color color)
         {
+            if (true)
+            {
+
+            }
             _colorDal.Add(color);
         }
 
