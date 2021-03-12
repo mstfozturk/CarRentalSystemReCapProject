@@ -40,5 +40,11 @@ namespace Business.Constants
         public static string RentalAlreadyReturned = " Araç Zaten Teslim Edildi ";
         public static string OnRental = "Araç Henüz Kirada Olduğu İçin Kiralama İşlemi Gerçekleştirilemez ";
 
+        public static string AddedCarImage = "Araç Resmi Başarıyla Eklendi";
+        public static string DeletedCarImage = "Araç Resmi Başarıyla Silindi";
+        public static string UpdatedCarImage = "Araç Resmi Başarıyla Güncellendi";
+        public static string CarImageLimitExceeded = "Bir Araç İçin 5 Adetten Fazla Resim Eklenemez";
+
+
     }
 }
