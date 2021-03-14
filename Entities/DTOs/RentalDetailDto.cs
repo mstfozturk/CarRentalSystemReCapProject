@@ -10,6 +10,7 @@ namespace Entities.DTOs
         public int RentalId { get; set; }
         public int ModelYear { get; set; }
         public string BrandName { get; set; }
+        public string ModelName { get; set; }
         public string Description { get; set; }
         public string CustomerName { get; set; }
         public string UserName { get; set; }

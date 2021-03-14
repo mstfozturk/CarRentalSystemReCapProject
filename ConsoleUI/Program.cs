@@ -66,10 +66,10 @@ namespace ConsoleUI
             {
                 Console.WriteLine(brand.BrandName);
             }
-            brandManager.Update(new Brand { BrandId = 4, BrandName = "Renault" });
+            brandManager.Update(new Brand { Id = 4, BrandName = "Renault" });
 
             brandManager.Add(new Brand { BrandName = "BMW" });
-            brandManager.Delete(new Brand { BrandId = 4 });
+            brandManager.Delete(new Brand { Id = 4 });
             foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine(brand.BrandName);
@@ -81,8 +81,8 @@ namespace ConsoleUI
                 Console.WriteLine(color.ColorName);
             }
             colorManager.Add(new Color { ColorName = "Sarı" });
-            colorManager.Update(new Color { ColorId = 1, ColorName = "Kırmızı" });
-            colorManager.Delete(new Color { ColorId = 1002 });
+            colorManager.Update(new Color { Id = 1, ColorName = "Kırmızı" });
+            colorManager.Delete(new Color { Id = 1002 });
 
 
             //araç ekleme
@@ -114,7 +114,7 @@ namespace ConsoleUI
             {
                 Console.WriteLine(item.FirstName + " " + item.LastName);
             }
-            userManager.Update(new User { UserId = 3, FirstName = "Merve", LastName = "Ceylan", Email = "ceylanmerve@email.com", Password = "00000" });
+            userManager.Update(new User { Id = 3, FirstName = "Merve", LastName = "Ceylan", Email = "ceylanmerve@email.com", Password = "00000" });
             customerManager.Add(new Customer { UserId = 2, CustomerName = "İpekyolu" });
             rentalManager.Return(2);
             rentalManager.Add(new Rental { CarId = 3, CustomerId = 3, RentDate = DateTime.Now, });

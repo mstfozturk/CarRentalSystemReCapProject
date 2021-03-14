@@ -60,7 +60,7 @@ namespace Business.Concrete
             {
                 return result;
             }
-            carImage.ImagePath = FileHelper.Update(_carImageDal.Get(p => p.CarImageId == carImage.CarImageId).ImagePath, file);
+            carImage.ImagePath = FileHelper.Update(_carImageDal.Get(p => p.Id == carImage.Id).ImagePath, file);
             carImage.CarImageDate = DateTime.Now;
             _carImageDal.Update(carImage);
             return new SuccessResult();
@@ -70,7 +70,7 @@ namespace Business.Concrete
         //[ValidationAspect(typeof(CarImageValidator))]
         public IDataResult<CarImage> Get(int id)
         {
-            return new SuccessDataResult<CarImage>(_carImageDal.Get(p => p.CarImageId == id));
+            return new SuccessDataResult<CarImage>(_carImageDal.Get(p => p.Id == id));
         }
 
         //[CacheAspect]
@@ -110,7 +110,7 @@ namespace Business.Concrete
         {
             try
             {
-                string path = @"\wwwroot\Images\logo.jpg";
+                string path = @"\wwwroot\Images\default.jpg";
                 var result = _carImageDal.GetAll(c => c.CarId == id).Any();
                 if (!result)
                 {
